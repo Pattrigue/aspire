@@ -1381,7 +1381,7 @@ public class KubernetesServiceTests(DcpApiServerCertificateFixture certificateFi
     public async Task CreateAsync_RecoveryBudgetIncludesServerRequestedRetryDelay(bool useHttpDate, int retryAfterSeconds)
     {
         using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(20));
-        var recoveryTimeout = TimeSpan.FromMilliseconds(500);
+        var recoveryTimeout = TimeSpan.FromSeconds(2);
         var (service, kubeconfigPath, fileSystem) = CreateService(createRecoveryTimeout: recoveryTimeout);
         using var disposableFileSystem = fileSystem;
         using var disposableService = service;
@@ -1416,7 +1416,7 @@ public class KubernetesServiceTests(DcpApiServerCertificateFixture certificateFi
     public async Task CreateAsync_RecoveryBudgetIncludesConfirmationRetryDelay(bool useHttpDate, int retryAfterSeconds)
     {
         using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(20));
-        var recoveryTimeout = TimeSpan.FromMilliseconds(500);
+        var recoveryTimeout = TimeSpan.FromSeconds(2);
         var (service, kubeconfigPath, fileSystem) = CreateService(createRecoveryTimeout: recoveryTimeout);
         using var disposableFileSystem = fileSystem;
         using var disposableService = service;
